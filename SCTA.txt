@@ -1,0 +1,96 @@
+package com.company;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class FormDonorDarah {
+    private JTextField textNama;
+    private JTextField textUmur;
+    private JTextField textBB;
+    private JComboBox comboBox1Goldar;
+    private JComboBox comboBox2JK;
+    private JComboBox comboBox3KB;
+    private JButton cekButton;
+    private JButton hapusButton;
+    private JLabel labelNama;
+    private JLabel labelUmur;
+    private JLabel labelBB;
+    private JLabel labelGoldar;
+    private JLabel labelJK;
+    private JLabel labelKB;
+    private JPanel form;
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        frame.setContentPane(new FormDonorDarah().form);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public FormDonorDarah() {
+        hapusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textNama.setText("");
+                textUmur.setText("");
+                textBB.setText("");
+            }
+        });
+
+        cekButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Gender;
+                Gender = (String) comboBox2JK.getSelectedItem();
+                int umur;
+                umur = Integer.parseInt(textUmur.getText());
+                int bb;
+                bb = Integer.parseInt(textBB.getText());
+                String Kondisi;
+                Kondisi = (String) comboBox3KB.getSelectedItem();
+                if (Gender == "Perempuan") {
+                    if (umur >= 17) {
+                        if (bb >= 45) {
+                            if (Kondisi == "Normal") {
+                                JOptionPane.showMessageDialog(null, "Boleh Donor");
+                            } else if (Kondisi == "Haid") {
+                                JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                            } else if (Kondisi == "Darah Rendah") {
+                                JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                            } else if (Kondisi == "Mengkonsumsi Obat Berat") {
+                                JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                    }
+                } else if (Gender == "Laki-Laki") {
+                    if (umur >= 17) {
+                        if (bb >= 45) {
+                            if (Kondisi == "Normal") {
+                                JOptionPane.showMessageDialog(null, "Boleh Donor");
+                            } else if (Kondisi == "Haid") {
+                                JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                            } else if (Kondisi == "Darah Rendah") {
+                                JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                            } else if (Kondisi == "Mengkonsumsi Obat Berat") {
+                                JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Tidak Boleh Donor");
+                    }
+                }
+
+            }
+        });
+    }
+}
+
+
